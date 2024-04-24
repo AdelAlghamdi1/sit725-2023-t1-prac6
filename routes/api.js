@@ -1,17 +1,28 @@
 const express = require('express');
 const router = express.Router();
 
-router.get('/addTwoNumbers/:firstNumber/:secondNumber', function(req, res) {
-    const firstNumber = parseInt(req.params.firstNumber);
-    const secondNumber = parseInt(req.params.secondNumber);
+let lastResult = null; 
+
+
+router.post('/addTwoNumbers', function(req, res) {
+    const { firstNumber, secondNumber } = req.body;
     const result = firstNumber + secondNumber;
 
     if (isNaN(result)) {
-        return res.status(400).json({ result: null, statusCode: 400 });
+        return res.status(400).json({ error: "Invalid input", statusCode: 400 });
     } else {
+        lastResult = result; 
         return res.status(200).json({ result: result, statusCode: 200 });
     }
 });
 
-module.exports = router;
 
+router.get('/getResult', function(req, res) {
+    if (lastResult === null) {
+        return res.status(404).json({ error: "No result available", statusCode: 404 });
+    } else {
+        return res.status(200).json({ result: lastResult, statusCode: 200 });
+    }
+});
+
+module.exports = router;
