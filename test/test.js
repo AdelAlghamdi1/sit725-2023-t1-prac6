@@ -1,31 +1,33 @@
-const expect = require("chai").expect;
-const request = require("request");
-
-const baseUrl = "http://localhost:8080/api/";
+// test/test.js
+import { expect } from 'chai';
+import request from 'request';
+const baseUrl = "http://localhost:3000/api/card";
 
 describe("API Tests", function() {
-    it("add two numbers using POST and return the result", function(done) {
+    it("add a new card using POST and return the result", function(done) {
         const options = {
             method: 'POST',
-            url: baseUrl + 'addTwoNumbers',
+            url: baseUrl + '/addCard',
             json: true,
             body: {
-                firstNumber: 5,
-                secondNumber: 3
+                title: "New Card Title",
+                image: "images/cat1.png",
+                link: "#",
+                description: "Description of the new card"
             }
         };
         request(options, function(error, response, body) {
-            expect(response.statusCode).to.equal(200);
-            expect(body.result).to.equal(8);
+            expect(response.statusCode).to.equal(201);
+            expect(body.card.title).to.equal("New Card Title");
             done();
         });
     });
 
-    it("retrieve the last result using GET", function(done) {
-        request(baseUrl + 'getResult', function(error, response, body) {
-            const data = JSON.parse(body);
+    it("retrieve all cards using GET and return the result", function(done) {
+        request(baseUrl + '/getAllCards', function(error, response, body) {
             expect(response.statusCode).to.equal(200);
-            expect(data.result).to.equal(8);
+            const cards = JSON.parse(body);
+            expect(cards).to.be.an('array');
             done();
         });
     });

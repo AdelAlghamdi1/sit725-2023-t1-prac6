@@ -1,19 +1,37 @@
 {
-  "name": "nodejs-testing-example",
-  "version": "1.0.0",
-  "description": "A simple Node.js project to demonstrate API testing with Mocha and Chai",
-  "main": "server.js",
-  "scripts": {
-    "start": "node server.js",
-    "test": "mocha --reporter spec"
-  },
-  "dependencies": {
-    "express": "^4.17.1",
-    "chai": "^4.3.4",
-    "mocha": "^8.4.0",
-    "request": "^2.88.2"
-  },
-  "author": "",
-  "license": "ISC"
+    "name": "sit725-2021-t2-prac3",
+    "version": "1.0.0",
+    "description": "sit 725 week 3 prac",
+    "main": "server.js",
+    "type": "module",
+    "scripts": {
+        "start": "node server.js",
+        "test": "mocha --reporter spec"
+    },
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/ChoudharyNavit22/sit725-2021-t2-prac3.git"
+    },
+    "keywords": [
+        "Nodejs",
+        "Express",
+        "Materialize",
+        "HTML",
+        "JS",
+        "CSS"
+    ],
+    "author": "Navit Choudhary",
+    "license": "MIT",
+    "bugs": {
+        "url": "https://github.com/ChoudharyNavit22/sit725-2021-t2-prac3/issues"
+    },
+    "homepage": "https://github.com/ChoudharyNavit22/sit725-2021-t2-prac3#readme",
+    "dependencies": {
+        "chai": "^5.1.0",
+        "dotenv": "^16.4.5",
+        "express": "^4.19.1",
+        "mocha": "^10.4.0",
+        "mongoose": "^8.3.0",
+        "request": "^2.88.2"
+    }
 }
-
