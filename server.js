@@ -5,7 +5,7 @@ const port = process.env.PORT || 8080;
 
 app.use(express.json());
 
-// Routes
+
 const apiRoutes = require('./routes/api');
 app.use('/api', apiRoutes);
 
